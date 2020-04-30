@@ -508,3 +508,42 @@ export const formatFeesRange = fees => {
   }
   return '';
 };
+
+/*
+export const cleanRelatedServiceLinks = links => {
+  if (!links) return null;
+
+  return links.map(link => {
+    return {
+      url: `/${link.topic.theme.slug}/${link.topic.slug}/${link.slug}`,
+      text: link.title,
+    };
+  });
+};
+
+*/
+
+export const cleanEvents = events => {
+  // takes an array of events and creates the event Url, formats the fees and picks first location
+  if (!events) return null;
+
+  return events.map(event => {
+    console.log(event)
+    return {
+      title: event.title,
+      description: event.description,
+      canceled: event.canceled,
+      date: event.date,
+      startTime: event.startTime,
+      endTime: event.endTime,
+      eventUrl: getEventPageUrl(event.slug, event.date),
+      feesRange: formatFeesRange(event.fees),
+      // until we have support for multiple locations, we're taking the first one
+      location: event.locations && event.locations.length ? event.locations[0] : null,
+      eventIsFree: event.eventIsFree,
+      registrationUrl: event.registrationUrl,
+    }
+  });
+};
+
+
