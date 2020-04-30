@@ -203,7 +203,6 @@ const getServicePageData = async (
   // keeping this logic in there for now, stuff is kinda messy
   servicePageData.contact = cleanContact(servicePageData.contact);
 
-  console.log(instance.parent)
   servicePageData.contextualNavData = {
     parent: instance.parent,
     relatedTo: relatedTo,
